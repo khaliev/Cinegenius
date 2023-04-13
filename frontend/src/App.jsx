@@ -35,15 +35,15 @@ function App() {
         <>
           <p>{currentQuestion.name}</p>
           {currentQuestion.options.map((option) => (
-            <div key={currentQuestion.id}>
+            <div key={option.id}>
               <input
                 type="radio"
-                id={`option-${option.id}`}
-                name={`question-${currentQuestion.id}`}
+                id={`${option.id}`}
+                name={`${currentQuestion.id}`}
                 value={option.value}
                 onChange={() => setSelectedOption(option.value)}
               />
-              <label htmlFor={`option-${option.id}`}>{option.label}</label>
+              <label htmlFor={`${option.id}`}>{option.value}</label>
             </div>
           ))}
           <button type="button" onClick={handleNextQuestion}>
@@ -54,5 +54,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
