@@ -13,17 +13,15 @@ function App() {
         setFetchedData(data);
       });
   };
+  const currentQuestion = fetchedData.find((question) => question.id === 1);
 
   return (
     <div className="App">
       <Header />
-      <p>coucou</p>
       <button type="button" onClick={fetchOneTime}>
         click me
       </button>
-      {fetchedData.map((questions) => (
-        <p key={questions.id}>{questions.name}</p>
-      ))}
+      {currentQuestion != null && <p>{currentQuestion.name}</p>}
     </div>
   );
 }
