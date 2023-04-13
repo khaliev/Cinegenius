@@ -5,11 +5,28 @@ const router = express.Router();
 const itemControllers = require("./controllers/itemControllers");
 
 const questionsList = [
-  { id: 1, name: "quel genre de film aimez-vous ?" },
-  { id: 2, name: "deuxieme question" },
-  { id: 3, name: "3 eme question " },
+  {
+    id: 1,
+    name: "Quelle occasion?",
+    options: [
+      { id: 1, value: "En famille" },
+      { id: 2, value: "Entre amis" },
+      { id: 3, value: "Seul(e)" },
+      { id: 4, value: "En couple" },
+    ],
+  },
+  {
+    id: 2,
+    name: "Quel genre de film?",
+    options: [
+      { id: 1, value: "Action" },
+      { id: 2, value: "Comédie" },
+      { id: 3, value: "Drame" },
+      { id: 4, value: "Horreur" },
+      { id: 5, value: "Science-fiction" },
+    ],
+  },
 ];
-
 router.get("/questions", (req, res) => {
   res.json(questionsList);
 });

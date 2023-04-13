@@ -5,6 +5,8 @@ import "./App.css";
 
 function App() {
   const [fetchedData, setFetchedData] = useState([]);
+  const [currentQuestionId, setCurrentQuestionId] = useState(1);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const fetchOneTime = () => {
     fetch("http://localhost:5001/questions")
@@ -13,7 +15,15 @@ function App() {
         setFetchedData(data);
       });
   };
-  const currentQuestion = fetchedData.find((question) => question.id === 1);
+  const currentQuestion = fetchedData.find(
+    (question) => question.id === currentQuestionId
+  );
+  const handleNextQuestion = () => {
+    if (selectedOption !== null) {
+      setCurrentQuestionId(currentQuestionId + 1);
+      setSelectedOption(null);
+    }
+  };
 
   return (
     <div className="App">
@@ -21,7 +31,26 @@ function App() {
       <button type="button" onClick={fetchOneTime}>
         click me
       </button>
-      {currentQuestion != null && <p>{currentQuestion.name}</p>}
+      {currentQuestion != null && (
+        <>
+          <p>{currentQuestion.name}</p>
+          {currentQuestion.options.map((option) => (
+            <div key={currentQuestion.id}>
+              <input
+                type="radio"
+                id={`option-${option.id}`}
+                name={`question-${currentQuestion.id}`}
+                value={option.value}
+                onChange={() => setSelectedOption(option.value)}
+              />
+              <label htmlFor={`option-${option.id}`}>{option.label}</label>
+            </div>
+          ))}
+          <button type="button" onClick={handleNextQuestion}>
+            Valider
+          </button>
+        </>
+      )}
     </div>
   );
 }
