@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Questionnaire from "./components/Questionnaire";
+import Footer from "./components/Footer";
 
 import "./App.css";
 
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <Questionnaire />
+      <Footer />
     </div>
   );
 }
