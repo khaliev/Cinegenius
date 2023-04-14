@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Questionnaire.css";
+import "./Quiz.css";
 
-function Questionnaire() {
+function Quiz() {
   // Définir les questions et les réponses possibles
   const questions = [
     {
@@ -42,7 +42,7 @@ function Questionnaire() {
   const { text, options } = questions[currentQuestion];
 
   return (
-    <div className="questionaire">
+    <form className="questionaire">
       <h2 className="Question">{text}</h2>
       <ul>
         {options.map((option) => (
@@ -68,8 +68,8 @@ function Questionnaire() {
           Question suivante
         </button>
       )}
-    </div>
+    </form>
   );
 }
 
-export default Questionnaire;
+export default Quiz;
