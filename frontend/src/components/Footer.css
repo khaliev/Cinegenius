@@ -1,9 +1,8 @@
-
 .Footer {
-    border-top: 2px solid black;
-    background-image: url(../img/cn.jpg);
-    max-width: 100%;
-    max-height: 1rem;
-    padding: 100px;
-    margin-top: 50px;
-  }
+  border-top: 2px solid black;
+  background-image: url(../img/cn.jpg);
+  max-width: 100%;
+  max-height: 1rem;
+  padding: 100px;
+  margin-top: 50px;
+}
