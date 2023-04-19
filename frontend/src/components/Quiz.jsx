@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Quizz.css";
+import "./Quiz.css";
 
-function Quizz() {
+function Quiz() {
   const [fetchedData, setFetchedData] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -51,4 +51,4 @@ function Quizz() {
     </div>
   );
 }
-export default Quizz;
+export default Quiz;
