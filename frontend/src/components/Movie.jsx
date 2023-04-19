@@ -6,14 +6,23 @@ function Movie() {
   const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=4376a0d52370c8fe44da849d510c9a86&language=en-US&page=1"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const randomIndex = Math.floor(Math.random() * data.results.length);
-        setRandomMovie(data.results[randomIndex]);
-      });
+    const fetchMovies = async () => {
+      const pagesToFetch = 200;
+      const requests = Array.from({ length: pagesToFetch }, (_, index) =>
+        fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=4376a0d52370c8fe44da849d510c9a86&language=en-US&page=${
+            index + 1
+          }`
+        ).then((response) => response.json())
+      );
+
+      const results = await Promise.all(requests);
+      const allResults = results.flatMap((result) => result.results);
+      const randomIndex = Math.floor(Math.random() * allResults.length);
+      setRandomMovie(allResults[randomIndex]);
+    };
+
+    fetchMovies();
   }, []);
 
   useEffect(() => {
@@ -51,9 +60,9 @@ function Movie() {
                 height="315"
                 src={`https://www.youtube.com/embed/${trailer}`}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               />
             </div>
           )}
