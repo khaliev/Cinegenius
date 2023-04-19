@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Quiz.css";
 
 function Quiz() {
   const [fetchedData, setFetchedData] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5001/questions")
@@ -22,6 +25,10 @@ function Quiz() {
       setCurrentQuestionId(currentQuestionId + 1);
       setSelectedOption(null);
     }
+  };
+
+  const handleShowRandomMovie = () => {
+    navigate("/movie");
   };
 
   return (
@@ -47,7 +54,7 @@ function Quiz() {
             <button
               type="button"
               className="button"
-              onClick={handleNextQuestion}
+              onClick={handleShowRandomMovie}
             >
               Valider
             </button>
