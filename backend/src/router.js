@@ -9,10 +9,10 @@ const questionsList = [
     id: 1,
     name: "Quelle occasion?",
     options: [
-      { id: 10, value: "En famille" },
+      { id: 10, value: "Entre famille" },
       { id: 11, value: "Entre amis" },
-      { id: 12, value: "Seul(e)" },
-      { id: 13, value: "En couple" },
+      { id: 12, value: "Date" },
+      { id: 13, value: "Solo" },
     ],
   },
   {
@@ -21,9 +21,20 @@ const questionsList = [
     options: [
       { id: 20, value: "Action" },
       { id: 21, value: "Comédie" },
-      { id: 22, value: "Drame" },
-      { id: 23, value: "Horreur" },
+      { id: 22, value: "Horreur" },
+      { id: 23, value: "Romance" },
       { id: 24, value: "Science-fiction" },
+    ],
+  },
+  {
+    id: 3,
+    name: "Date de publication?",
+    options: [
+      { id: 30, value: "-3 ans" },
+      { id: 31, value: "-5 ans" },
+      { id: 32, value: "-10 ans" },
+      { id: 33, value: "-20 ans" },
+      { id: 34, value: "+20 ans" },
     ],
   },
 ];
