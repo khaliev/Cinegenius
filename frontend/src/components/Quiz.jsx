@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Quiz.css";
 
 function Quiz() {
@@ -6,13 +6,14 @@ function Quiz() {
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const fetchOneTime = () => {
+  useEffect(() => {
     fetch("http://localhost:5001/questions")
       .then((response) => response.json())
       .then((data) => {
         setFetchedData(data);
       });
-  };
+  }, []);
+
   const currentQuestion = fetchedData.find(
     (question) => question.id === currentQuestionId
   );
@@ -25,9 +26,6 @@ function Quiz() {
 
   return (
     <div className="Quizz">
-      <button type="button" onClick={fetchOneTime}>
-        click me
-      </button>
       {currentQuestion != null && (
         <>
           <p>{currentQuestion.name}</p>
