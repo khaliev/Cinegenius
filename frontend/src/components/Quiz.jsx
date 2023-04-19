@@ -25,28 +25,44 @@ function Quiz() {
   };
 
   return (
-    <div className="Quizz">
+    <form className="questionaire">
       {currentQuestion != null && (
         <>
-          <p>{currentQuestion.name}</p>
-          {currentQuestion.options.map((option) => (
-            <div key={option.id}>
-              <input
-                type="radio"
-                id={`${option.id}`}
-                name={`${currentQuestion.id}`}
-                value={option.value}
-                onChange={() => setSelectedOption(option.value)}
-              />
-              <label htmlFor={`${option.id}`}>{option.value}</label>
-            </div>
-          ))}
-          <button type="button" onClick={handleNextQuestion}>
-            Valider
-          </button>
+          <h2 className="Question">{currentQuestion.name}</h2>
+          <ul>
+            {currentQuestion.options.map((option) => (
+              <li key={option.id}>
+                <input
+                  type="radio"
+                  id={`${option.id}`}
+                  name={`${currentQuestion.id}`}
+                  value={option.value}
+                  onChange={() => setSelectedOption(option.value)}
+                />
+                <label htmlFor={`${option.id}`}>{option.value}</label>
+              </li>
+            ))}
+          </ul>
+          {currentQuestionId === 3 ? (
+            <button
+              type="button"
+              className="button"
+              onClick={handleNextQuestion}
+            >
+              Valider
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="button"
+              onClick={handleNextQuestion}
+            >
+              Question suivante
+            </button>
+          )}
         </>
       )}
-    </div>
+    </form>
   );
 }
 export default Quiz;
