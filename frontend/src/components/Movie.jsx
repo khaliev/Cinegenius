@@ -10,7 +10,7 @@ function Movie() {
       const pagesToFetch = 100;
       const requests = Array.from({ length: pagesToFetch }, (_, index) =>
         fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=4376a0d52370c8fe44da849d510c9a86&language=en-US&page=${
+          `https://api.themoviedb.org/3/movie/popular?api_key=4376a0d52370c8fe44da849d510c9a86&language=fr-FR&page=${
             index + 1
           }`
         ).then((response) => response.json())
@@ -28,7 +28,7 @@ function Movie() {
   useEffect(() => {
     if (randomMovie) {
       fetch(
-        `https://api.themoviedb.org/3/movie/${randomMovie.id}/videos?api_key=4376a0d52370c8fe44da849d510c9a86&language=en-US`
+        `https://api.themoviedb.org/3/movie/${randomMovie.id}/videos?api_key=4376a0d52370c8fe44da849d510c9a86&language=fr-FR`
       )
         .then((response) => response.json())
         .then((data) => {
