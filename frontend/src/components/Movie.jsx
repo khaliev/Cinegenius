@@ -48,6 +48,7 @@ function Movie() {
         <div className="text">
           <h2>{randomMovie.title}</h2>
           <img
+            className="img"
             src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
             alt={randomMovie.title}
           />

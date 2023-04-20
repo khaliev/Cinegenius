@@ -19,11 +19,11 @@ const questionsList = [
     id: 2,
     name: "Quel genre de film?",
     options: [
-      { id: 20, value: "Action" },
-      { id: 21, value: "Comédie" },
-      { id: 22, value: "Horreur" },
-      { id: 23, value: "Romance" },
-      { id: 24, value: "Science-fiction" },
+      { id: 28, value: "Action" },
+      { id: 35, value: "Comédie" },
+      { id: 27, value: "Horreur" },
+      { id: 10749, value: "Romance" },
+      { id: 878, value: "Science-fiction" },
     ],
   },
   {
