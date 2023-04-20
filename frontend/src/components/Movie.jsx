@@ -1,9 +1,7 @@
+import React, { useState, useEffect } from "react";
 import "./Movie.css";
 
 function Movie() {
-<<<<<<< HEAD
-  return <p>JE SUIS UNE MERDE</p>;
-=======
   const [randomMovie, setRandomMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
 
@@ -72,7 +70,6 @@ function Movie() {
       )}
     </div>
   );
->>>>>>> aba465bb88326823a058c06f9ad993691ad10d07
 }
 
 export default Movie;
