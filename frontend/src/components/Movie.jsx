@@ -8,39 +8,43 @@ function Movie() {
   useEffect(() => {
     const fetchMovies = async () => {
       const pagesToFetch = 100;
-      const requests = Array.from({ length: pagesToFetch }, (_, index) =>
-        fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=4376a0d52370c8fe44da849d510c9a86&language=fr-FR&page=${
-            index + 1
-          }`
-        ).then((response) => response.json())
-      );
+      const randomPageIndex = 1 + Math.floor(Math.random() * pagesToFetch);
 
-      const results = await Promise.all(requests);
-      const allResults = results.flatMap((result) => result.results);
-      const randomIndex = Math.floor(Math.random() * allResults.length);
-      setRandomMovie(allResults[randomIndex]);
+      fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${
+          import.meta.env.VITE_TMDB_API_KEY
+        }&language=fr-FR&page=${randomPageIndex}`
+      )
+        .then((response) => response.json())
+        .then((page) => {
+          const randomMovieIndex = Math.floor(
+            Math.random() * page.results.length
+          );
+          const movie = page.results[randomMovieIndex];
+
+          setRandomMovie(movie);
+
+          fetch(
+            `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${
+              import.meta.env.VITE_TMDB_API_KEY
+            }&language=fr-FR`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const youtubeTrailer = data.results.find(
+                (video) => video.site === "YouTube" && video.type === "Trailer"
+              );
+              if (youtubeTrailer) {
+                setTrailer(youtubeTrailer.key);
+              } else {
+                setTrailer(null);
+              }
+            });
+        });
     };
 
     fetchMovies();
   }, []);
-
-  useEffect(() => {
-    if (randomMovie) {
-      fetch(
-        `https://api.themoviedb.org/3/movie/${randomMovie.id}/videos?api_key=4376a0d52370c8fe44da849d510c9a86&language=fr-FR`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const youtubeTrailer = data.results.find(
-            (video) => video.site === "YouTube" && video.type === "Trailer"
-          );
-          if (youtubeTrailer) {
-            setTrailer(youtubeTrailer.key);
-          }
-        });
-    }
-  }, [randomMovie]);
 
   return (
     <div>
