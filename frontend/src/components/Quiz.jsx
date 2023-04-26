@@ -43,8 +43,6 @@ function Quiz() {
     navigate("/movie", { state: { quizResponses } });
   }
 
- 
-
   return (
     <form className="questionaire">
       {currentQuestion != null && (
