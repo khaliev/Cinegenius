@@ -30,11 +30,10 @@ function Quiz() {
       setSelectedOption(null);
     }
   };
+  function handleShowRandomMovie() {
+    navigate("/movie", { state: { quizResponses } });
+  }
 
-  const handleShowRandomMovie = () => {
-    navigate("/movie");
-  };
-  // eslint-disable-next-line no-unused-vars
   const handleOptionChange = (value) => {
     setSelectedOption(value);
     if (currentQuestionId === 2) {
