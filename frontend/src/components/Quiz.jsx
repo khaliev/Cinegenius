@@ -24,16 +24,6 @@ function Quiz() {
   const currentQuestion = fetchedData.find(
     (question) => question.id === currentQuestionId
   );
-  const handleNextQuestion = () => {
-    if (selectedOption !== null) {
-      setCurrentQuestionId(currentQuestionId + 1);
-      setSelectedOption(null);
-    }
-  };
-  function handleShowRandomMovie() {
-    navigate("/movie", { state: { quizResponses } });
-  }
-
   const handleOptionChange = (value) => {
     setSelectedOption(value);
     if (currentQuestionId === 2) {
@@ -42,6 +32,18 @@ function Quiz() {
       setQuizResponses({ ...quizResponses, releaseDate: value });
     }
   };
+  const handleNextQuestion = () => {
+    if (selectedOption !== null) {
+      handleOptionChange(selectedOption);
+      setCurrentQuestionId(currentQuestionId + 1);
+      setSelectedOption(null);
+    }
+  };
+  function handleShowRandomMovie() {
+    navigate("/movie", { state: { quizResponses } });
+  }
+
+ 
 
   return (
     <form className="questionaire">
@@ -56,7 +58,7 @@ function Quiz() {
                   id={`${option.id}`}
                   name={`${currentQuestion.id}`}
                   value={option.value}
-                  // onChange={() => setSelectedOption(option.value)}
+                  checked={selectedOption === option.value}
                   onChange={() => handleOptionChange(option.value)}
                 />
                 <label htmlFor={`${option.id}`}>{option.value}</label>
