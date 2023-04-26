@@ -7,7 +7,7 @@ function Quiz() {
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
   const [quizResponses, setQuizResponses] = useState({
-    genre: "",
+    genre: 0,
     releaseDate: "",
   });
 
@@ -24,10 +24,10 @@ function Quiz() {
   const currentQuestion = fetchedData.find(
     (question) => question.id === currentQuestionId
   );
-  const handleOptionChange = (value) => {
+  const handleOptionChange = (optionId, value) => {
     setSelectedOption(value);
     if (currentQuestionId === 2) {
-      setQuizResponses({ ...quizResponses, genre: value });
+      setQuizResponses({ ...quizResponses, genre: optionId });
     } else if (currentQuestionId === 3) {
       setQuizResponses({ ...quizResponses, releaseDate: value });
     }
@@ -57,7 +57,7 @@ function Quiz() {
                   name={`${currentQuestion.id}`}
                   value={option.value}
                   checked={selectedOption === option.value}
-                  onChange={() => handleOptionChange(option.value)}
+                  onChange={() => handleOptionChange(option.id, option.value)}
                 />
                 <label htmlFor={`${option.id}`}>{option.value}</label>
               </li>
