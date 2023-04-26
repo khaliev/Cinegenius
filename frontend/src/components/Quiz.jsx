@@ -6,6 +6,10 @@ function Quiz() {
   const [fetchedData, setFetchedData] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [quizResponses, setQuizResponses] = useState({
+    genre: 0,
+    releaseDate: "",
+  });
 
   const navigate = useNavigate();
 
@@ -20,16 +24,24 @@ function Quiz() {
   const currentQuestion = fetchedData.find(
     (question) => question.id === currentQuestionId
   );
+  const handleOptionChange = (optionId, value) => {
+    setSelectedOption(value);
+    if (currentQuestionId === 2) {
+      setQuizResponses({ ...quizResponses, genre: optionId });
+    } else if (currentQuestionId === 3) {
+      setQuizResponses({ ...quizResponses, releaseDate: value });
+    }
+  };
   const handleNextQuestion = () => {
     if (selectedOption !== null) {
+      handleOptionChange(selectedOption);
       setCurrentQuestionId(currentQuestionId + 1);
       setSelectedOption(null);
     }
   };
-
-  const handleShowRandomMovie = () => {
-    navigate("/movie");
-  };
+  function handleShowRandomMovie() {
+    navigate("/movie", { state: { quizResponses } });
+  }
 
   return (
     <form className="questionaire">
@@ -44,7 +56,8 @@ function Quiz() {
                   id={`${option.id}`}
                   name={`${currentQuestion.id}`}
                   value={option.value}
-                  onChange={() => setSelectedOption(option.value)}
+                  checked={selectedOption === option.value}
+                  onChange={() => handleOptionChange(option.id, option.value)}
                 />
                 <label htmlFor={`${option.id}`}>{option.value}</label>
               </li>
