@@ -6,6 +6,10 @@ function Quiz() {
   const [fetchedData, setFetchedData] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [quizResponses, setQuizResponses] = useState({
+    genre: "",
+    releaseDate: "",
+  });
 
   const navigate = useNavigate();
 
@@ -30,6 +34,15 @@ function Quiz() {
   const handleShowRandomMovie = () => {
     navigate("/movie");
   };
+  // eslint-disable-next-line no-unused-vars
+  const handleOptionChange = (value) => {
+    setSelectedOption(value);
+    if (currentQuestionId === 2) {
+      setQuizResponses({ ...quizResponses, genre: value });
+    } else if (currentQuestionId === 3) {
+      setQuizResponses({ ...quizResponses, releaseDate: value });
+    }
+  };
 
   return (
     <form className="questionaire">
@@ -44,7 +57,8 @@ function Quiz() {
                   id={`${option.id}`}
                   name={`${currentQuestion.id}`}
                   value={option.value}
-                  onChange={() => setSelectedOption(option.value)}
+                  // onChange={() => setSelectedOption(option.value)}
+                  onChange={() => handleOptionChange(option.value)}
                 />
                 <label htmlFor={`${option.id}`}>{option.value}</label>
               </li>
