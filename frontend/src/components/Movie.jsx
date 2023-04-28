@@ -55,13 +55,10 @@ function Movie() {
       };
       const genreId = genreMapping[quizResponses.genre];
 
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&language=fr-FR&sort_by=popularity.desc&with_genres=${genreId}&primary_release_date.gte=${
-        releaseDateRange.split(",")[0]
-      }&primary_release_date.lte=${
-        releaseDateRange.split(",")[1]
-      }&page=${randomPageIndex}`;
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY
+        }&language=fr-FR&sort_by=popularity.desc&with_genres=${genreId}&primary_release_date.gte=${releaseDateRange.split(",")[0]
+        }&primary_release_date.lte=${releaseDateRange.split(",")[1]
+        }&page=${randomPageIndex}`;
       // then
       const response = await fetch(url);
       const page = await response.json();
@@ -70,8 +67,7 @@ function Movie() {
       setRandomMovie(movie);
 
       const trailerResponse = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${
-          import.meta.env.VITE_TMDB_API_KEY
+        `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${import.meta.env.VITE_TMDB_API_KEY
         }&language=fr-FR`
       );
       const trailerData = await trailerResponse.json();
@@ -88,6 +84,10 @@ function Movie() {
     fetchMovies();
   }, [quizResponses]);
 
+  function refreshPage() {
+    window.location.href="/movie"
+  }
+
   return (
     <div>
       {randomMovie && (
@@ -99,6 +99,7 @@ function Movie() {
             alt={randomMovie.title}
           />
           <p>{randomMovie.overview}</p>
+          <button type="button" onClick={refreshPage}> <span>autre suggestion</span> </button>
           {trailer && (
             <div>
               <h3>Trailer:</h3>
