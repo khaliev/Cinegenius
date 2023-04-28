@@ -88,6 +88,10 @@ function Movie() {
     fetchMovies();
   }, [quizResponses]);
 
+  function refreshPage() {
+    window.location.href = "/movie";
+  }
+
   return (
     <div>
       {randomMovie && (
@@ -99,6 +103,10 @@ function Movie() {
             alt={randomMovie.title}
           />
           <p>{randomMovie.overview}</p>
+          <button type="button" onClick={refreshPage}>
+            {" "}
+            <span>autre suggestion</span>{" "}
+          </button>
           {trailer && (
             <div>
               <h3>Trailer:</h3>
