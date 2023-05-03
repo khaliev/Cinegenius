@@ -93,26 +93,26 @@ function Movie() {
   }
 
   return (
-    <div>
+    <div className="main">
       {randomMovie && (
         <div className="text">
           <h2>{randomMovie.title}</h2>
-          <img
-            className="img"
-            src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-            alt={randomMovie.title}
-          />
-          <p>{randomMovie.overview}</p>
+          <div className="n">
+            <img
+              className="img"
+              src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
+              alt={randomMovie.title}
+            />
+            <p>{randomMovie.overview}</p>
+          </div>
           <button type="button" onClick={refreshPage}>
             {" "}
-            <span>autre suggestion</span>{" "}
+            <span>Autre suggestion</span>{" "}
           </button>
           {trailer && (
             <div>
               <h3>Trailer:</h3>
               <iframe
-                width="560"
-                height="315"
                 src={`https://www.youtube.com/embed/${trailer}`}
                 title="YouTube video player"
                 frameBorder="0"

@@ -1,0 +1,13 @@
+.caroussel-container {
+  display: none;
+}
+
+@media screen and (min-width: 700px) {
+  .caroussel-container {
+    display: block;
+  }
+  .caroussel-image {
+    max-width: 800px; /* Ajustez la largeur maximale en pixels */
+    max-height: 550px; /* Ajustez la hauteur maximale en pixels */
+  }
+}
