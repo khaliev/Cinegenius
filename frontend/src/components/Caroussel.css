@@ -5,6 +5,7 @@
 @media screen and (min-width: 700px) {
   .caroussel-container {
     display: block;
+    margin-top: 15px;
   }
   .caroussel-image {
     max-width: 800px; /* Ajustez la largeur maximale en pixels */

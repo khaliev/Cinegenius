@@ -20,4 +20,10 @@
   .header {
     height: 150px;
   }
+  .logo1 {
+    width: 150px;
+  }
+  .logo2 {
+    width: 350px;
+  }
 }
