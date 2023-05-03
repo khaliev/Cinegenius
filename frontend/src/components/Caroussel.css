@@ -8,6 +8,12 @@
   }
   .caroussel-image {
     max-width: 800px; /* Ajustez la largeur maximale en pixels */
-    max-height: 550px; /* Ajustez la hauteur maximale en pixels */
+    max-height: 500px; /* Ajustez la hauteur maximale en pixels */
+  }
+  .caroussel-item-title {
+    color: white;
+    font-size: 25px;
+    margin-right: 30px;
+    margin-top: 10px;
   }
 }
