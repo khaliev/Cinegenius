@@ -29,11 +29,11 @@ function Caroussel() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1100,
     slidesToShow: 5,
     slidesToScroll: 5,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 6000,
     pauseOnHover: true,
   };
 
