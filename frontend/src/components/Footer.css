@@ -1,23 +1,21 @@
-* {
-  margin: 0;
-}
 .Footer {
-  position: relative;
   background-image: url(../img/cn.jpg);
-  max-width: 100%;
-  height: 200px; /* ajustez la hauteur en fonction de vos besoins */
-  padding: 100px;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 5%;
+  height: 200px;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 @media screen and (min-width: 700px) {
   .Footer {
     background-image: url(../img/footerDesktop.jpg);
-    max-width: 100%;
-    height: 500px; /* ajustez la hauteur en fonction de vos besoins */
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 500px;
+    padding: 10%;
+    position: relative;
   }
 
   .Footer img {
