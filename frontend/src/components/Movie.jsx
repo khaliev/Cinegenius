@@ -45,28 +45,31 @@ function Movie() {
       const releaseDateRange = getReleaseDateRange(quizResponses.releaseDate);
       const pagesToFetch = 50;
       const randomPageIndex = 1 + Math.floor(Math.random() * pagesToFetch);
-      const genreMapping = {
-        Action: 28,
-        Comédie: 35,
-        Drame: 18,
-        Horreur: 27,
-        Romance: 10749,
-        "Science-fiction": 878,
-      };
-      const genreId = genreMapping[quizResponses.genre];
 
       const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&language=fr-FR&sort_by=popularity.desc&with_genres=${genreId}&primary_release_date.gte=${
+      }&language=fr-FR&sort_by=popularity.desc&with_genres=${
+        quizResponses.genre
+      }&primary_release_date.gte=${
         releaseDateRange.split(",")[0]
       }&primary_release_date.lte=${
         releaseDateRange.split(",")[1]
       }&page=${randomPageIndex}`;
+
       // then
       const response = await fetch(url);
       const page = await response.json();
-      const randomMovieIndex = Math.floor(Math.random() * page.results.length);
-      const movie = page.results[randomMovieIndex];
+
+      const filteredMovies = page.results.filter(
+        (movie) =>
+          movie.genre_ids.includes(quizResponses.genre) &&
+          movie.genre_ids.length <= 3
+      );
+
+      const randomMovieIndex = Math.floor(
+        Math.random() * filteredMovies.length
+      );
+      const movie = filteredMovies[randomMovieIndex];
       setRandomMovie(movie);
 
       const trailerResponse = await fetch(
