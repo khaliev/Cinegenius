@@ -7,6 +7,7 @@ function Quiz() {
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
   const [quizResponses, setQuizResponses] = useState({
+    runtime: 0,
     genre: 0,
     releaseDate: "",
   });
@@ -26,7 +27,9 @@ function Quiz() {
   );
   const handleOptionChange = (value) => {
     setSelectedOption(value);
-    if (currentQuestionId === 2) {
+    if (currentQuestionId === 1) {
+      setQuizResponses({ ...quizResponses, runtime: value.id });
+    } else if (currentQuestionId === 2) {
       setQuizResponses({ ...quizResponses, genre: value.id });
     } else if (currentQuestionId === 3) {
       setQuizResponses({ ...quizResponses, releaseDate: value.value });
