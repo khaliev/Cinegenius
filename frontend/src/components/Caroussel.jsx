@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from "react-slick";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import "slick-carousel/slick/slick.css";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import "slick-carousel/slick/slick-theme.css";
-// eslint-disable-next-line import/no-self-import
 import "./Caroussel.css";
 
 function Caroussel() {
