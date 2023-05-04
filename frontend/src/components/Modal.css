@@ -1,0 +1,60 @@
+.modal {
+  font-size: 12px;
+  border: 2px solid;
+  border-color: grey;
+  border-radius: 1rem;
+  background-color: #e1e7f0;
+  width: 75%;
+  height: 50%;
+  margin: auto;
+  padding: 10px 10px;
+  animation-name: slideIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  transform-origin: top right;
+  opacity: 0;
+  box-shadow: -1px 4px 12px 0px #ff0000, 0em -8px 9px 0px black;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%) translateY(-200%) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(25%) translateY(-125%) scale(1.5);
+  }
+}
+
+.buttonpop {
+  border-radius: 50%;
+  width: 3rem;
+}
+
+.modal > .content {
+  font-size: large;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  text-align: justify;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: static;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
