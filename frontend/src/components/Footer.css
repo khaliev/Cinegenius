@@ -1,8 +1,27 @@
 .Footer {
   background-image: url(../img/cn.jpg);
-  max-width: 100%;
-  max-height: 1rem;
-  padding: 100px;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 5%;
+  height: 200px;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 700px) {
+  .Footer {
+    background-image: url(../img/footerDesktop.jpg);
+    height: 500px;
+    padding: 10%;
+    position: relative;
+  }
+
+  .Footer img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 30%;
+  }
 }
