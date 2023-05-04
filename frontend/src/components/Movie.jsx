@@ -133,8 +133,8 @@ function Movie() {
   return (
     <div className="main">
       {isLoading ? (
-        <div className="loading">
-          <span>Chargement en cours...</span>
+        <div className="container">
+          <div className="loader" />
         </div>
       ) : (
         filteredMovies &&
