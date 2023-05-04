@@ -18,8 +18,6 @@ function Movie() {
         return [90, 120];
       case 12:
         return [120, 180];
-      case 13:
-        return [180, Infinity];
       default:
         return [0, Infinity];
     }
