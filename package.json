@@ -29,9 +29,5 @@
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3"
-  },
-  "dependencies": {
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
   }
 }
