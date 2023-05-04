@@ -60,6 +60,10 @@ button {
 h3 {
   margin-bottom: 10px;
 }
+.loading {
+    color:red;
+    font-size: xx-large;
+}
 @media screen and (min-width: 701px) {
   iframe {
     height: 800px;
@@ -92,6 +96,7 @@ h3 {
     font-size: 30px;
     color: white;
   }
+  
   button {
     margin-top: 50px;
     margin-bottom: 50px;

@@ -133,7 +133,9 @@ function Movie() {
   return (
     <div className="main">
       {isLoading ? (
-        <p className="loading">Chargement en cours...</p>
+        <div className="loading">
+          <span>Chargement en cours...</span>
+        </div>
       ) : (
         filteredMovies &&
         filteredMovies[index] && (
