@@ -49,3 +49,15 @@
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+@media screen and (min-width: 700px) {
+  .header {
+    height: 150px;
+  }
+  .logo1 {
+    width: 150px;
+  }
+  .logo2 {
+    width: 350px;
+  }
+}

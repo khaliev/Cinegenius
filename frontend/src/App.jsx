@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Quiz from "./components/Quiz";
 import Movie from "./components/Movie";
 import Footer from "./components/Footer";
+import Caroussel from "./components/Caroussel";
 
 import "./App.css";
 
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
+        <Caroussel />
         <Routes>
           <Route path="/" element={<Quiz />} />
           <Route path="/movie" element={<Movie />} />
