@@ -16,6 +16,7 @@
 
 .modal {
   width: 80%;
+  height: 25%;
   max-width: 600px;
   background-color: #fff;
   padding: 20px;
@@ -44,7 +45,7 @@
   }
   to {
     opacity: 1;
-    transform: translateX(-25%) translateY(-92%) scale(1.5);
+    transform: translateX(-25%) translateY(-100%) scale(1.5);
     width: 45%;
   }
 }
@@ -74,7 +75,11 @@
   font-size: medium;
   font-weight: 300;
   color: rgb(0, 0, 0);
-  text-align: justify;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  text-align: center;
 }
 .modal > .actions {
   width: 100%;
@@ -90,8 +95,20 @@
   line-height: 20px;
   right: -10px;
   top: -10px;
-  font-size: 24px;
+  font-size: 30px;
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
+}
+@media only screen and (min-width: 768px) {
+  .modal {
+    padding: 0;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal > .content {
+    margin-bottom: 80px;
+  }
 }
