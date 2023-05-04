@@ -61,26 +61,33 @@ function Movie() {
     const fetchMovies = async () => {
       const runtimeRange = getRuntimeFilter(quizResponses.runtime);
       const releaseDateRange = getReleaseDateRange(quizResponses.releaseDate);
-      const pagesToFetch = Infinity;
-      const randomPageIndex = 1 + Math.floor(Math.random() * pagesToFetch);
+      const pagesToFetch = 100;
 
-      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&language=fr-FR&sort_by=popularity.desc&with_genres=${
-        quizResponses.genre
-      }&primary_release_date.gte=${
-        releaseDateRange.split(",")[0]
-      }&primary_release_date.lte=${
-        releaseDateRange.split(",")[1]
-      }&with_runtime.gte=${runtimeRange[0]}&with_runtime.lte=${
-        runtimeRange[1]
-      }&page=${randomPageIndex}`;
+      const fetchPage = async (pageNumber) => {
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_TMDB_API_KEY
+        }&language=fr-FR&sort_by=popularity.desc&with_genres=${
+          quizResponses.genre
+        }&primary_release_date.gte=${
+          releaseDateRange.split(",")[0]
+        }&primary_release_date.lte=${
+          releaseDateRange.split(",")[1]
+        }&with_runtime.gte=${runtimeRange[0]}&with_runtime.lte=${
+          runtimeRange[1]
+        }&page=${pageNumber}`;
 
-      // then
-      const response = await fetch(url);
-      const page = await response.json();
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+      };
 
-      const sortedMovies = page.results.sort(
+      const fetchedPages = await Promise.all(
+        Array.from({ length: pagesToFetch }, (_, i) => fetchPage(i + 1))
+      );
+
+      const allMovies = fetchedPages.flatMap((page) => page.results);
+
+      const sortedMovies = allMovies.sort(
         (a, b) => a.genre_ids.length - b.genre_ids.length
       );
       const filteredMoviesG = sortedMovies.filter((movie) => {
@@ -88,11 +95,6 @@ function Movie() {
         return mainGenre === quizResponses.genre;
       });
 
-      /* const filteredMoviesG = page.results.filter(
-        (movie) =>
-          movie.genre_ids.includes(quizResponses.genre) &&
-          movie.genre_ids.length <= 3
-      ); */
       setFilteredMovies(filteredMoviesG);
       setIsLoading(false);
     };
