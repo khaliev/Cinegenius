@@ -1,20 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modal {
-  font-size: 12px;
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
   border: 2px solid;
   border-color: grey;
   border-radius: 1rem;
   background-color: #e1e7f0;
-  width: 75%;
-  height: 50%;
-  margin: auto;
-  padding: 10px 10px;
   animation-name: slideIn;
-  animation-duration: 1s;
+  animation-duration: 0.3s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   transform-origin: top right;
   opacity: 0;
   box-shadow: -1px 4px 12px 0px #ff0000, 0em -8px 9px 0px black;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @keyframes slideIn {
@@ -24,7 +44,24 @@
   }
   to {
     opacity: 1;
-    transform: translateX(25%) translateY(-125%) scale(1.5);
+    transform: translateX(-25%) translateY(-92%) scale(1.5);
+    width: 45%;
+  }
+}
+.modal.active {
+  animation-name: slideInDiagonal;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes slideInDiagonal {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-100vw, -100vh);
   }
 }
 
