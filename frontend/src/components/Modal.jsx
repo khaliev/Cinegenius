@@ -6,7 +6,7 @@ function Modal() {
   return (
     <Popup
       trigger={
-        <button type="button" className="button">
+        <button type="button" className="buttonpop">
           {" "}
           ?{" "}
         </button>
@@ -25,17 +25,6 @@ function Modal() {
               <br />
               Répondez à ces trois questions et profitez du visionnage!
             </p>
-          </div>
-          <div className="actions">
-            <button
-              type="button"
-              className="button"
-              onClick={() => {
-                close();
-              }}
-            >
-              Fermer
-            </button>
           </div>
         </div>
       )}
