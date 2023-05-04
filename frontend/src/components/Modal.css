@@ -14,7 +14,7 @@
   animation-fill-mode: forwards;
   transform-origin: top right;
   opacity: 0;
-      box-shadow: -1px 4px 12px 0px #ff0000, 0em -8px 9px 0px black;
+  box-shadow: -1px 4px 12px 0px #ff0000, 0em -8px 9px 0px black;
 }
 
 @keyframes slideIn {
