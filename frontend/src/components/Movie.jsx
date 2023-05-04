@@ -133,18 +133,20 @@ function Movie() {
   return (
     <div className="main">
       {isLoading ? (
-        <p>Chargement en cours...</p>
+        <p className="loading">Chargement en cours...</p>
       ) : (
         filteredMovies &&
         filteredMovies[index] && (
           <div key={filteredMovies[index].id} className="text">
-            <h2 className="n">{filteredMovies[index].title}</h2>
-            <img
-              className="img"
-              src={`https://image.tmdb.org/t/p/w500${filteredMovies[index].poster_path}`}
-              alt={filteredMovies[index].title}
-            />
-            <p>{filteredMovies[index].overview}</p>
+            <h2>{filteredMovies[index].title}</h2>
+            <div className="n">
+              <img
+                className="img"
+                src={`https://image.tmdb.org/t/p/w500${filteredMovies[index].poster_path}`}
+                alt={filteredMovies[index].title}
+              />
+              <p>{filteredMovies[index].overview}</p>
+            </div>
             <button type="button" onClick={refreshPage}>
               <span>autre suggestion</span>
             </button>
