@@ -34,8 +34,8 @@
 }
 
 .modal > .content {
-  font-size: large;
-  font-weight: 700;
+  font-size: medium;
+  font-weight: 300;
   color: rgb(0, 0, 0);
   text-align: justify;
 }
