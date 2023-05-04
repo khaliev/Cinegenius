@@ -7,6 +7,7 @@ function Quiz() {
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
   const [selectedOption, setSelectedOption] = useState(null);
   const [quizResponses, setQuizResponses] = useState({
+    runtime: 0,
     genre: 0,
     releaseDate: "",
   });
@@ -24,12 +25,14 @@ function Quiz() {
   const currentQuestion = fetchedData.find(
     (question) => question.id === currentQuestionId
   );
-  const handleOptionChange = (optionId, value) => {
+  const handleOptionChange = (value) => {
     setSelectedOption(value);
-    if (currentQuestionId === 2) {
-      setQuizResponses({ ...quizResponses, genre: optionId });
+    if (currentQuestionId === 1) {
+      setQuizResponses({ ...quizResponses, runtime: value.id });
+    } else if (currentQuestionId === 2) {
+      setQuizResponses({ ...quizResponses, genre: value.id });
     } else if (currentQuestionId === 3) {
-      setQuizResponses({ ...quizResponses, releaseDate: value });
+      setQuizResponses({ ...quizResponses, releaseDate: value.value });
     }
   };
   const handleNextQuestion = () => {
@@ -53,12 +56,13 @@ function Quiz() {
               <li key={option.id}>
                 <input
                   type="radio"
-                  id={`${option.id}`}
-                  name={`${currentQuestion.id}`}
-                  value={option.value}
-                  checked={selectedOption === option.value}
-                  onChange={() => handleOptionChange(option.id, option.value)}
+                  key={option.id}
+                  name={`question-${currentQuestion.id}`}
+                  value={option}
+                  onChange={() => handleOptionChange(option)}
+                  checked={selectedOption && selectedOption.id === option.id}
                 />
+
                 <label htmlFor={`${option.id}`}>{option.value}</label>
               </li>
             ))}

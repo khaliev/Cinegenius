@@ -7,6 +7,21 @@ function Movie() {
   const [trailer, setTrailer] = useState(null);
   const location = useLocation();
   const { quizResponses } = location.state;
+  const getRuntimeFilter = (runtimeId) => {
+    // runtime range generator
+    switch (runtimeId) {
+      case 10:
+        return [0, 90];
+      case 11:
+        return [90, 120];
+      case 12:
+        return [120, 180];
+      case 13:
+        return [180, Infinity];
+      default:
+        return [0, Infinity];
+    }
+  };
   const getReleaseDateRange = (releaseDate) => {
     const currentYear = new Date().getFullYear();
     let startYear;
@@ -42,31 +57,37 @@ function Movie() {
 
   useEffect(() => {
     const fetchMovies = async () => {
+      const runtimeRange = getRuntimeFilter(quizResponses.runtime);
       const releaseDateRange = getReleaseDateRange(quizResponses.releaseDate);
       const pagesToFetch = 50;
       const randomPageIndex = 1 + Math.floor(Math.random() * pagesToFetch);
-      const genreMapping = {
-        Action: 28,
-        Comédie: 35,
-        Drame: 18,
-        Horreur: 27,
-        Romance: 10749,
-        "Science-fiction": 878,
-      };
-      const genreId = genreMapping[quizResponses.genre];
 
       const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&language=fr-FR&sort_by=popularity.desc&with_genres=${genreId}&primary_release_date.gte=${
+      }&language=fr-FR&sort_by=popularity.desc&with_genres=${
+        quizResponses.genre
+      }&primary_release_date.gte=${
         releaseDateRange.split(",")[0]
       }&primary_release_date.lte=${
         releaseDateRange.split(",")[1]
+      }&with_runtime.gte=${runtimeRange[0]}&with_runtime.lte=${
+        runtimeRange[1]
       }&page=${randomPageIndex}`;
+
       // then
       const response = await fetch(url);
       const page = await response.json();
-      const randomMovieIndex = Math.floor(Math.random() * page.results.length);
-      const movie = page.results[randomMovieIndex];
+
+      const filteredMovies = page.results.filter(
+        (movie) =>
+          movie.genre_ids.includes(quizResponses.genre) &&
+          movie.genre_ids.length <= 3
+      );
+
+      const randomMovieIndex = Math.floor(
+        Math.random() * filteredMovies.length
+      );
+      const movie = filteredMovies[randomMovieIndex];
       setRandomMovie(movie);
 
       const trailerResponse = await fetch(
