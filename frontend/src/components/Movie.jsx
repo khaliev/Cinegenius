@@ -3,7 +3,8 @@ import "./Movie.css";
 import { useLocation } from "react-router-dom";
 
 function Movie() {
-  const [randomMovie, setRandomMovie] = useState(null);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [index, setIndex] = useState(0);
   const [trailer, setTrailer] = useState(null);
   const location = useLocation();
   const { quizResponses } = location.state;
@@ -78,18 +79,28 @@ function Movie() {
       const response = await fetch(url);
       const page = await response.json();
 
-      const filteredMovies = page.results.filter(
+      const filteredMoviesG = page.results.filter(
         (movie) =>
           movie.genre_ids.includes(quizResponses.genre) &&
           movie.genre_ids.length <= 3
       );
 
-      const randomMovieIndex = Math.floor(
-        Math.random() * filteredMovies.length
-      );
-      const movie = filteredMovies[randomMovieIndex];
-      setRandomMovie(movie);
+      setFilteredMovies(filteredMoviesG);
+    };
 
+    fetchMovies();
+  }, [quizResponses]);
+
+  function refreshPage() {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * filteredMovies.length);
+    } while (newIndex === index && filteredMovies.length > 1);
+    setIndex(newIndex);
+
+    const movie = filteredMovies[newIndex];
+
+    (async () => {
       const trailerResponse = await fetch(
         `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
@@ -105,28 +116,22 @@ function Movie() {
       } else {
         setTrailer(null);
       }
-    };
-    fetchMovies();
-  }, [quizResponses]);
-
-  function refreshPage() {
-    window.location.href = "/movie";
+    })();
   }
 
   return (
     <div>
-      {randomMovie && (
-        <div className="text">
-          <h2>{randomMovie.title}</h2>
+      {filteredMovies && filteredMovies[index] && (
+        <div key={filteredMovies[index].id} className="text">
+          <h2>{filteredMovies[index].title}</h2>
           <img
             className="img"
-            src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-            alt={randomMovie.title}
+            src={`https://image.tmdb.org/t/p/w500${filteredMovies[index].poster_path}`}
+            alt={filteredMovies[index].title}
           />
-          <p>{randomMovie.overview}</p>
+          <p>{filteredMovies[index].overview}</p>
           <button type="button" onClick={refreshPage}>
-            {" "}
-            <span>autre suggestion</span>{" "}
+            <span>autre suggestion</span>
           </button>
           {trailer && (
             <div>
