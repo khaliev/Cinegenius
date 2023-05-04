@@ -131,14 +131,14 @@ function Movie() {
   }
 
   return (
-    <div>
+    <div className="main">
       {isLoading ? (
         <p>Chargement en cours...</p>
       ) : (
         filteredMovies &&
         filteredMovies[index] && (
           <div key={filteredMovies[index].id} className="text">
-            <h2>{filteredMovies[index].title}</h2>
+            <h2 className="n">{filteredMovies[index].title}</h2>
             <img
               className="img"
               src={`https://image.tmdb.org/t/p/w500${filteredMovies[index].poster_path}`}
