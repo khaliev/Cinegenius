@@ -19,8 +19,8 @@ function Modal() {
             &times;
           </button>
           <div className="content">
-            <p>
-              Chosissez le film selon vos préférences parmi des milliers
+            <p className="pa">
+              Choisissez le film selon vos préférences parmi des milliers
               d'autres.
               <br />
               Répondez à ces trois questions et profitez du visionnage!
