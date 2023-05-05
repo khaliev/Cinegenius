@@ -57,6 +57,7 @@ function Quiz() {
                 <input
                   type="radio"
                   key={option.id}
+                  id={option.id}
                   name={`question-${currentQuestion.id}`}
                   value={option}
                   onChange={() => handleOptionChange(option)}
