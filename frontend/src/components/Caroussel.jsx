@@ -35,6 +35,7 @@ function Caroussel() {
 
   return (
     <div className="caroussel-container">
+      <h1>Films populaires :</h1>
       <Slider
         dots={settings.dots}
         infinite={settings.infinite}
