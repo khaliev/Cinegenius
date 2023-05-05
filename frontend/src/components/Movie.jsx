@@ -59,7 +59,7 @@ function Movie() {
     const fetchMovies = async () => {
       const runtimeRange = getRuntimeFilter(quizResponses.runtime);
       const releaseDateRange = getReleaseDateRange(quizResponses.releaseDate);
-      const pagesToFetch = 100;
+      const pagesToFetch = 250;
 
       const fetchPage = async (pageNumber) => {
         const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
@@ -72,7 +72,7 @@ function Movie() {
           releaseDateRange.split(",")[1]
         }&with_runtime.gte=${runtimeRange[0]}&with_runtime.lte=${
           runtimeRange[1]
-        }&page=${pageNumber}`;
+        }&vote_average.gte=5&page=${pageNumber}`; // add an average vote >=5
 
         const response = await fetch(url);
         const data = await response.json();
