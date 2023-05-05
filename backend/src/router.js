@@ -12,7 +12,6 @@ const questionsList = [
       { id: 10, value: "Court (moins de 1h30)" },
       { id: 11, value: "Moyen (entre 1h30 et 2h)" },
       { id: 12, value: "Long (entre 2h et 3h)" },
-      { id: 13, value: "Très long (plus de 3h)" },
     ],
   },
   {
