@@ -100,7 +100,7 @@
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 701px) {
   .modal {
     padding: 0;
     height: 20%;
@@ -110,5 +110,9 @@
   }
   .modal > .content {
     margin-bottom: 80px;
+  }
+  .pa {
+    font-size: 30px;
+    margin-top: 90px;
   }
 }
