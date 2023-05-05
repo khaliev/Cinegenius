@@ -59,7 +59,7 @@ function Movie() {
     const fetchMovies = async () => {
       const runtimeRange = getRuntimeFilter(quizResponses.runtime);
       const releaseDateRange = getReleaseDateRange(quizResponses.releaseDate);
-      const pagesToFetch = 250;
+      const pagesToFetch = 100;
 
       const fetchPage = async (pageNumber) => {
         const url = `https://api.themoviedb.org/3/discover/movie?api_key=${
@@ -145,7 +145,7 @@ function Movie() {
                 src={`https://image.tmdb.org/t/p/w500${filteredMovies[index].poster_path}`}
                 alt={filteredMovies[index].title}
               />
-              <p>{filteredMovies[index].overview}</p>
+              <p className="movie">{filteredMovies[index].overview}</p>
             </div>
             <button type="button" onClick={refreshPage}>
               <span>autre suggestion</span>
