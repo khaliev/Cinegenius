@@ -1,5 +1,13 @@
-@import url("../components/font.css");
-
+@font-face {
+  font-family: “Roboto”;
+  src: url(“/frontend/fonts/Roboto/Roboto-Light.ttf”) format(“truetype”);
+  font-weight: 300;
+}
+@font-face {
+  font-family: “Ubuntu”;
+  src: url(“/frontend/fonts/Ubuntu/Ubuntu-Medium.ttf”) format(“truetype”);
+  font-weight: 500;
+}
 .text {
   color: white;
 }
@@ -118,7 +126,7 @@ h3 {
     font-size: 60px;
   }
 
-  .movie {
+  p {
     margin-top: 120px;
     margin-left: 20px;
     font-size: 30px;
