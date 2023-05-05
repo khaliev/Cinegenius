@@ -1,5 +1,13 @@
-@import url("../components/font.css");
-
+@font-face {
+  font-family: “Roboto”;
+  src: url(“/frontend/fonts/Roboto/Roboto-Light.ttf”) format(“truetype”);
+  font-weight: 300;
+}
+@font-face {
+  font-family: “Ubuntu”;
+  src: url(“/frontend/fonts/Ubuntu/Ubuntu-Medium.ttf”) format(“truetype”);
+  font-weight: 500;
+}
 .text {
   color: white;
 }
@@ -18,7 +26,7 @@ iframe {
 }
 
 .synopsis {
-  font-family: "roboto";
+  font-family: "Roboto", Verdana, Tahoma, sans-serif;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 30px;
@@ -26,7 +34,7 @@ iframe {
 }
 
 .titlemovie {
-  font-family: "ubuntu";
+  font-family: “Ubuntu”, Verdana, Tahoma, sans-serif;
   font-size: 30px;
 }
 button {
@@ -111,18 +119,21 @@ h3 {
   h3 {
     font-size: 30px;
     margin-bottom: 15px;
+    font-family: “Ubuntu”, Verdana, Tahoma, sans-serif;
   }
   h2 {
     margin-top: 90px;
     margin-left: 350px;
     font-size: 60px;
+    font-family: “Ubuntu”, Verdana, Tahoma, sans-serif;
   }
 
-  .movie {
+  p {
     margin-top: 120px;
     margin-left: 20px;
     font-size: 30px;
     color: white;
+    font-family: “roboto”, Verdana, Tahoma, sans-serif;
   }
 
   button {
