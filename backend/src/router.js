@@ -7,7 +7,7 @@ const itemControllers = require("./controllers/itemControllers");
 const questionsList = [
   {
     id: 1,
-    name: "Quelle durée préférez-vous pour le film?",
+    name: "Quelle durée préférez-vous pour un film?",
     options: [
       { id: 10, value: "Court (moins de 1h30)" },
       { id: 11, value: "Moyen (entre 1h30 et 2h)" },
@@ -16,7 +16,7 @@ const questionsList = [
   },
   {
     id: 2,
-    name: "Quel genre de film?",
+    name: "Quel genre de film vous intéresse-t-il?",
     options: [
       { id: 28, value: "Action" },
       { id: 35, value: "Comédie" },
@@ -27,7 +27,7 @@ const questionsList = [
   },
   {
     id: 3,
-    name: "Date de publication?",
+    name: "Sa date de parution?",
     options: [
       { id: 30, value: "-3 ans" },
       { id: 31, value: "-5 ans" },
